@@ -1,3 +1,40 @@
 Github class notes
 
 https://cce-bigdataintro-1160.github.io/CEBD-1160/8-ml.html
+
+If you have a target it is always supervised.
+Un supervised is if youdon't know the result, you don't have a target.
+
+Supervised Classification
+use cases: remote sensing
+
+Supervised Regression
+use cases:Stock price
+
+Unsupervised Learning
+use cases:
+https://stackoverflow.com/questions/26182980/can-anyone-give-a-real-life-example-of-supervised-learning-and-unsupervised-lear
+
+X - is what you want to predict eg diagnosis
+
+Class exercise 1
+For your chosen dataset, create the train and test splits. Print the shape of the full initial dataset and then the shape of each of the 4 split datasets X_train, X_test, y_train, y_test
+
+Solution:
+from sklearn.datasets import load_breast_cancer
+from sklearn.model_selection import train_test_split
+
+diabetes = load_breast_cancer()
+feature_names = diabetes.feature_names
+X = diabetes.data
+y = diabetes.target
+
+# Splitting features and target datasets into: train and test
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.35)
+
+# Printing original Dataset
+print(f"X.shape: {X.shape}, y.shape: {y.shape}")
+
+# Printing splitted datasets
+print(f"X_train.shape: {X_train.shape}, y_train.shape: {y_train.shape}")
+print(f"X_test.shape: {X_test.shape}, y_test.shape: {y_test.shape}")
