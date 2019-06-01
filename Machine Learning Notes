@@ -38,3 +38,34 @@ print(f"X.shape: {X.shape}, y.shape: {y.shape}")
 # Printing splitted datasets
 print(f"X_train.shape: {X_train.shape}, y_train.shape: {y_train.shape}")
 print(f"X_test.shape: {X_test.shape}, y_test.shape: {y_test.shape}")
+
+
+If we split it using pandas (Wine data set example)
+
+Solution:
+
+import pandas as pd
+import numpy as np
+
+# Loading data using our pandas DataFrames (as in all previous classes)
+from sklearn.model_selection import train_test_split
+
+wine_df = pd.read_csv('wine.data',
+                      sep=',',
+                      header=0)
+wine_df.columns = ['class', 'alcohol', 'malic_acid', 'ash', 'alcalinity_of_ash', 'magnesium', 'total_phenols',
+                   'flavanoids',
+                   'nonflavanoid_phenols', 'proanthocyanins', 'color_intensity', 'hue', 'od280 od315_of_diluted_wines',
+                   'proline']
+
+X = wine_df.drop('class', axis=1)
+y = wine_df['class']
+
+print(f'Dataset X shape: {X.shape}')
+print(f'Dataset y shape: {y.shape}')
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.35)
+
+# Printing splitted datasets
+print(f"X_train.shape: {X_train.shape}, y_train.shape: {y_train.shape}")
+print(f"X_test.shape: {X_test.shape}, y_test.shape: {y_test.shape}")
